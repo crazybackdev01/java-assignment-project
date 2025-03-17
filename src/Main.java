@@ -15,13 +15,13 @@ public class Main {
 
         try {
             Connection conn = DriverManager.getConnection(url, user, password);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM books");
-            while (rs.next()) {
-                System.out.println(rs.getInt("id") + " - " + rs.getString("title"));
+            Statement readStmt = conn.createStatement();
+            ResultSet readResult = readStmt.executeQuery("SELECT * FROM books");
+            while (readResult.next()) {
+                System.out.println(readResult.getInt("id") + " - " + readResult.getString("title"));
             }
-            rs.close();
-            stmt.close();
+            readResult.close();
+            readStmt.close();
             conn.close();
 
 
